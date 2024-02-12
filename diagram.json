@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 209.91, "left": 56.65, "attrs": {} },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -318.75,
+      "left": -177.13,
+      "attrs": {}
+    },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -71.08, "left": 421.62, "attrs": {} }
+  ],
+  "connections": [
+    [ "keypad1:R1", "uno:13", "green", [ "v149.25", "h257.93", "v1.08" ] ],
+    [ "keypad1:R2", "uno:12", "green", [ "v141.68", "h253.34" ] ],
+    [ "keypad1:R3", "uno:11", "green", [ "v134.11", "h258.29", "v65.55" ] ],
+    [ "keypad1:R4", "uno:10", "green", [ "v126.55", "h257.74", "v73.11" ] ],
+    [ "keypad1:C1", "uno:9", "green", [ "v117.89", "h258.09", "v56.23", "h0.19" ] ],
+    [ "keypad1:C2", "uno:8", "green", [ "v108.16", "h259.33", "v91.5" ] ],
+    [ "keypad1:C3", "uno:7", "green", [ "v100.59", "h13.11" ] ],
+    [ "keypad1:C4", "uno:6", "green", [ "v91.94", "h265.05", "v28.12" ] ],
+    [ "lcd1:VDD", "uno:5V", "red", [ "v352.95", "h-0.14", "v36.38", "h-247.65" ] ],
+    [ "lcd1:A", "uno:5V", "red", [ "v390", "h-371.47" ] ],
+    [ "lcd1:VSS", "uno:GND.3", "#8f4814", [ "v358.22", "h-217.76" ] ],
+    [ "lcd1:K", "uno:GND.3", "#8f4814", [ "v358.14", "h-361.46" ] ],
+    [ "lcd1:RW", "uno:GND.3", "#8f4814", [ "v358.27", "h-255.42" ] ],
+    [ "lcd1:RS", "uno:0", "violet", [ "v138.09", "h-167.49" ] ],
+    [ "lcd1:E", "uno:1", "violet", [ "v129.57", "h-198.35", "v29.45" ] ],
+    [ "lcd1:D7", "uno:5", "blue", [ "v30.16", "h-47.64" ] ],
+    [ "lcd1:D6", "uno:4", "blue", [ "v38.68", "h-16.84" ] ],
+    [ "lcd1:D5", "uno:3", "blue", [ "v48.62", "h-5.21" ] ],
+    [ "lcd1:D4", "uno:2", "blue", [ "v57.85", "h-252.03" ] ]
+  ],
+  "dependencies": {}
+}
