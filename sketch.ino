@@ -1,5 +1,5 @@
-#include <LiquidCrystal.h>
-#include <Keypad.h>
+#include "LiquidCrystal.h"
+#include "Keypad.h"
 
 LiquidCrystal lcd(0, 1, 2, 3, 4, 5);
 
@@ -41,17 +41,16 @@ void setup() {
   lcd.print("Adrian");
   delay(1000);
   lcd.clear();
-  // Serial.begin(9600);
-  lcd.setCursor(15, 0);
+  lcd.setCursor(14, 0);
   lcd.print("0");
 }
 
-String x, y;
+String x = "0", y;
 boolean secondNumber = false, firstInput = true;
 char op;
-int res;
+long res;
 
-int nr_cifre(int a)
+int nr_cifre(long a)
 {
   int n = 0;
   while (a)
@@ -76,55 +75,62 @@ void loop() {
     {
       if (secondNumber == false)
       {
+        if (x == "0")
+          x = "";
         x += key;
         lcd.setCursor(15 - x.length(), 0);
         lcd.print(x);
-        // Serial.println(x);
       }
       else
       {
+        if (y == "0")
+          y = "";
         y += key;
         lcd.setCursor(15 - y.length(), 1);
         lcd.print(y);
-        // Serial.println(y);
       }
     }
     else if (key == '+' || key == '-' || key == '*' || key == '/')
     {
       lcd.setCursor(15, 0);
       lcd.print(key);
+      if (x == "0") {
+        lcd.setCursor(14, 0);
+        lcd.print("0");
+      }
       secondNumber = true;
       op = key;
-      // Serial.println(op);
     }
     else if (key == '=')
     {
       if (op == '+')
         res = x.toInt() + y.toInt();
-      if (op == '-')
+      else if (op == '-')
         res = x.toInt() - y.toInt();
-      if (op == '*')
+      else if (op == '*')
         res = x.toInt() * y.toInt();
-      if (op == '/')
+      else if (op == '/')
         res = x.toInt() / y.toInt();
+      else res = x.toInt();
       lcd.clear();
-      if (res >= 0)
+      if (res > 0)
         lcd.setCursor(15 - nr_cifre(res), 0);
       else
         lcd.setCursor(14 - nr_cifre(res), 0);
       lcd.print(res);
       x = String(res);
       y = "";
-      // Serial.println(res);
+      op = ' ';
+      secondNumber = false;
     }
     else if (key == 'C')
     {
       lcd.clear();
-      lcd.setCursor(15, 0);
+      lcd.setCursor(14, 0);
       lcd.print("0");
       secondNumber = false;
       firstInput = true;
-      x = "";
+      x = "0";
       y = "";
       res = 0;
       op = ' ';
