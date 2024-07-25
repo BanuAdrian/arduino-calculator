@@ -9,3 +9,7 @@
 
 - https://wokwi.com/projects/new/arduino-uno
 
+# Screenshots
+
+![image](https://github.com/user-attachments/assets/657a2f8b-ebda-4258-9651-e754df321a5a)
+
